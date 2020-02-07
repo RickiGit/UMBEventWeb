@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    input[type=text], input[type=number] {
+        min-width: 100%;
+        height: 50px;
+    }
+
+    input[type=datetime-local] {
+        min-width: 100%;
+        height: 50px;
+    }
+
+    textarea {
+        min-width: 100%;
+    }
+
+    select {
+        min-width: 100%;
+        min-height: 50px;
+    }
+</style>
+
+<section class="section">
+    @Html.Raw(TempData["msg"])
+    <h1 class="section-header">
+        <div>Create User</div>
+    </h1>
+    <div class="card" style="padding:20px">
+        <div class="col col-md-6">
+            @using (Html.BeginForm("Create", "UserAccess", FormMethod.Post, new
+            {
+                enctype = "multipart/form-data"
+            }))
+            {
+                @Html.AntiForgeryToken()
+                <label>NIP</label>
+                <input type="text" name="NIP" id="NIP" class="form-control" style="margin-bottom:10px" placeholder="NIP" />
+                <label>Name</label>
+                <input type="text" name="Name" id="Name" class="form-control" style="margin-bottom:10px" placeholder="Name" />
+                <label>Username</label>
+                <input type="text" name="Username" id="Username" class="form-control" style="margin-bottom:10px" placeholder="Username" />
+                <label>Password</label>
+                <input type="text" name="Password" id="Password" class="form-control" style="margin-bottom:10px" placeholder="Password" />
+                <label>Confirm Password</label>
+                <input type="text" name="ConfirmPassword" id="ConfirmPassword" class="form-control" style="margin-bottom:10px" placeholder="Confirm Password" />
+
+                <input type="submit" class="btn btn-primary" value="Save Data" />
+            }
+        </div>
+    </div>
+</section>

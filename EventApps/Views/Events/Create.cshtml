@@ -1,0 +1,82 @@
+﻿@model EventApps.Models.Event
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    input[type=text], input[type=number] {
+        min-width: 100%;
+        height: 50px;
+    }
+
+    input[type=datetime-local] {
+        min-width: 100%;
+        height: 50px;
+    }
+
+    textarea {
+        min-width: 100%;
+    }
+
+    select {
+        min-width: 100%;
+        min-height: 50px;
+    }
+</style>
+
+<section class="section">
+    @Html.Raw(TempData["msg"])
+    <h1 class="section-header">
+        <div>Create Events</div>
+    </h1>
+    <div class="card" style="padding:20px">
+        <div class="col col-md-6">
+            @using (Html.BeginForm("Create", "Events", FormMethod.Post, new
+            {
+                enctype = "multipart/form-data"
+            }))
+            {
+                @Html.AntiForgeryToken()
+                <label>Title*</label>
+                <input type="text" name="Title" id="Title" class="form-control" style="margin-bottom:10px" placeholder="Title Event" />
+                <label>Description</label>
+                <textarea name="Description" id="Description" class="form-control" style="margin-bottom:10px" placeholder="Description"></textarea>
+                <label>Location*</label>
+                <input type="text" name="Location" id="Location" class="form-control" style="margin-bottom:10px" placeholder="Location Event" />
+                <label>Geo Location</label>
+                @*<div class="row">
+                    <div class="col col-md-6">
+                        <input type="text" name="Latitude" id="Latitude" class="form-control" style="margin-bottom:10px" placeholder="Latitude" />
+                    </div>
+                    <div class="col col-md-6">
+                        <input type="text" name="Longitude" id="Longitude" class="form-control" style="margin-bottom:10px" placeholder="Longitude" />
+                    </div>
+                </div>*@
+                <label>Quota*</label>
+                <input type="number" name="Quota" id="Quota" class="form-control" style="margin-bottom:10px" placeholder="Quota" />
+                <label>Start Date*</label>
+                <input type="datetime-local" name="StartDate" id="StartDate" class="form-control" style="margin-bottom:10px" placeholder="Start Date Event" />
+                <label>End Date*</label>
+                <input type="datetime-local" name="EndDate" id="EndDate" class="form-control" style="margin-bottom:10px" placeholder="End Date Event" />
+                <label>Pricing*</label>
+                <div class="row">
+                    <div class="col col-md-4">
+                        <input type="number" name="NormalPrice" id="NormalPrice" class="form-control" style="margin-bottom:10px" placeholder="Normal Price" />
+                    </div>
+                    <div class="col col-md-4">
+                        <input type="number" name="HighPrice" id="HighPrice" class="form-control" style="margin-bottom:10px" placeholder="High Price" />
+                    </div>
+                    <div class="col col-md-4">
+                        <input type="number" name="OtherPrice" id="OtherPrice" class="form-control" style="margin-bottom:10px" placeholder="Other Price" />
+                    </div>
+                </div>
+                <label>Event Type*</label>
+                @Html.DropDownListFor(model => Model.IDType, ViewBag.TypeEvent as IEnumerable<SelectListItem>, new { @class = "form-control", @style = "margin-bottom:10px; height: 45px" })
+                <label>Poster</label>
+                <input type="file" name="FileImages" class="form-control" id="FileImage" onchange="ValidationFilie()" accept="image/x-png,image/gif,image/jpeg" required style="margin-bottom:10px; width: 100%; height: 50px"/>
+                <input type="submit" class="btn btn-primary" value="Save Data" />
+            }
+        </div>
+    </div>
+</section>

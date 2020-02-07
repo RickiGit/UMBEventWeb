@@ -1,0 +1,19 @@
+﻿.dataTables_wrapper .dataTables_paginate .paginate_button {
+    margin: 5px !important;
+    background: #574B90;
+    padding: 10px !important;
+    color: white;
+    border-radius: 5px;
+}
+
+.paginate_button current {
+    margin: 5px !important;
+    background: white;
+    padding: 10px !important;
+    color: #574B90;
+    border-radius: 5px;
+}
+
+#tableList{
+    width: 100%;
+}

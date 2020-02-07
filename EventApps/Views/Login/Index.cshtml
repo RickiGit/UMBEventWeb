@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/modules/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        body{
+            background-color:#bf0f32;
+        }
+
+        .card{
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+
+        .form-control{
+            margin-bottom: 10px;
+        }
+
+        .mt20percent{
+            margin-top: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col col-md-4"></div>
+        <div class="col col-md-4">
+            @using (Html.BeginForm("CheckLogin", "Login", FormMethod.Post, new
+            {
+                enctype = "multipart/form-data"
+            }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Raw(TempData["msg"])
+
+                <div class="card mt20percent">
+                    <label>Username</label>
+                    <input type="text" name="Username" id="Password" class="form-control" />
+                    <label>Password</label>
+                    <input type="password" name="Password" id="Password" class="form-control" />
+                    <button class="btn btn-primary">Login</button>
+                </div>
+            }
+        </div>
+        <div class="col col-md-4"></div>
+    </div>
+</body>
+</html>

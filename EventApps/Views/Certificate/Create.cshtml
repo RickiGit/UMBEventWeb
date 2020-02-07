@@ -1,0 +1,27 @@
+﻿@model EventApps.Models.Event
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section">
+    @Html.Raw(TempData["msg"])
+    <h1 class="section-header" style="margin-top:-90px">
+        <div>Create Events</div>
+    </h1>
+    <div class="card" style="padding:20px">
+        <div class="col col-md-6">
+            @using (Html.BeginForm("Create", "Certificate", FormMethod.Post, new
+            {
+                enctype = "multipart/form-data"
+            }))
+            {
+                @Html.AntiForgeryToken()
+                <label>Template Certificate</label>
+                <input type="hidden" name="IDEvent" id="IDEvent" value="@ViewBag.IDEvent" />
+                <input type="file" name="FileTemplate" class="form-control" id="FileTemplate" onchange="ValidationFilie()" accept=".pdf" required style="margin-bottom:10px; height: 50px; width:100%" />
+                <input type="submit" class="btn btn-primary" value="Save Data" />
+            }
+        </div>
+    </div>
+</section>

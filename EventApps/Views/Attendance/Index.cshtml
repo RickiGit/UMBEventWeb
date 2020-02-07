@@ -1,0 +1,44 @@
+﻿@model IEnumerable<EventApps.Models.Event>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section">
+    <h1 class="section-header">
+        <div>Event Attendance</div>
+    </h1>
+    <div class="card" style="padding:20px">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Title Event</td>
+                    <td>Start Date</td>
+                    <td>End Date</td>
+                    <td>Location</td>
+                    <td>Quota</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var items in Model)
+                {
+                    <tr>
+                        <td>@items.Title</td>
+                        <td>@items.StartDate</td>
+                        <td>@items.EndDate</td>
+                        <td>@items.Location</td>
+                        <td>@items.Quota</td>
+                        <td>
+                            <a href="@Url.Action("GenerateQRCode", "Attendance", new { key = items.ID })" class="btn btn-primary">Create QR Code Absent</a>
+                            <a href="@Url.Action("Attendance", "Attendance", new { ID = items.ID })" class="btn btn-warning">List Attendance</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c26197758c994439a4b5c34819d6c432" Name="Diagram1">
+        <EntityTypeShape EntityType="DBEventModel.EventType" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEventModel.ParticipantType" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEventModel.Registration" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBEventModel.UserAccess" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DBEventModel.Participant" Width="1.5" PointX="3" PointY="2.5" />
+        <AssociationConnector Association="DBEventModel.FK_Participant_ParticipantType" />
+        <AssociationConnector Association="DBEventModel.FK_Registration_Participant" />
+        <EntityTypeShape EntityType="DBEventModel.Certificate" Width="1.5" PointX="5.25" PointY="17.125" />
+        <EntityTypeShape EntityType="DBEventModel.Event" Width="1.5" PointX="3" PointY="11.875" />
+        <EntityTypeShape EntityType="DBEventModel.SnackEvent" Width="1.5" PointX="5.25" PointY="11.5" />
+        <AssociationConnector Association="DBEventModel.FK_Certificate_Event" />
+        <AssociationConnector Association="DBEventModel.FK_Event_EventType" />
+        <AssociationConnector Association="DBEventModel.FK_Registration_Event" />
+        <AssociationConnector Association="DBEventModel.FK_SnackEvent_Event" />
+        <AssociationConnector Association="DBEventModel.FK_SnackEvent_Participant" />
+        <EntityTypeShape EntityType="DBEventModel.Attendance" Width="1.5" PointX="8.25" PointY="8.375" />
+        <AssociationConnector Association="DBEventModel.FK_Attendance_Event" />
+        <AssociationConnector Association="DBEventModel.FK_Attendance_Participant" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

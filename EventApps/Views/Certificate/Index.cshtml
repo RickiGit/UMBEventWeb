@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EventApps.Models.Event>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section">
+    <h1 class="section-header">
+        <div>Certificate</div>
+    </h1>
+    <div class="card" style="padding:20px">
+        <table id="tableList" class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Title Event</td>
+                    <td>Start Date</td>
+                    <td>End Date</td>
+                    <td>Location</td>
+                    <td>Quota</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var items in Model)
+                {
+                    <tr>
+                        <td>@items.Title</td>
+                        <td>@items.StartDate</td>
+                        <td>@items.EndDate</td>
+                        <td>@items.Location</td>
+                        <td>@items.Quota</td>
+                        <td>
+                            @if (!items.CertificateTemplate)
+                            {
+                                <a href="@Url.Action("Create", "Certificate", new { ID = items.ID })" class="btn btn-warning">Upload Template Certificate</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+

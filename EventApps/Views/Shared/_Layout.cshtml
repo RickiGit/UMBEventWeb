@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/modules/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/modules/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/Content/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/Content/modules/summernote/summernote-lite.css">
+    <link rel="stylesheet" href="~/Content/modules/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="~/Content/css/mystyle.css" />
+</head>
+<body>
+    <div id="app">
+        <div class="main-wrapper">
+            <div class="navbar-bg"></div>
+            <div class="main-sidebar">
+                <aside id="sidebar-wrapper">
+                    <div class="sidebar-brand">
+                        <a href="index.html">UMB EVENTS</a>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="menu-header">Monitoring</li>
+                        <li>
+                            <a href="@Url.Action("Index","Home")"><i class="ion ion-speedometer"></i><span>Dashboard</span></a>
+                        </li>
+                        <li class="menu-header">Maintain</li>
+                        <li>
+                            <a href="@Url.Action("Index","EventType")"><i class="ion ion-ios-paper"></i><span>Events Type</span></a>
+                            <a href="@Url.Action("Index","Events")"><i class="ion ion-ios-albums"></i><span>Events</span></a>
+                            <a href="@Url.Action("Index","ParticipantType")"><i class="ion ion-android-people"></i><span>Participant Type</span></a>
+                            <a href="@Url.Action("Index","Participant")"><i class="ion ion-android-person-add" "></i><span>Participant</span></a>
+                            <a href="@Url.Action("Index","Certificate")"><i class="ion ion-android-person-add" "></i><span>Certificate</span></a>
+                        </li>
+
+                        <li class="menu-header">Transaction</li>
+                        <li>
+                            <a href="@Url.Action("Index","Attendance")"><i class="ion ion-ios-time"></i><span>Attendance</span></a>
+                            <a href="@Url.Action("Index","Registration")"><i class="ion ion-android-list"></i><span>Registration Event</span></a>
+                        </li>
+                        <li class="menu-header">Account</li>
+                        <li>
+                            <a href="@Url.Action("Index","UserAccess")"><i class="ion ion-ios-time"></i><span>User Access</span></a>
+                            <a href="@Url.Action("Logout","Login")"><i class="ion ion-ios-time"></i><span>Logout</span></a>
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+            <div class="main-content">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#tableList').DataTable();
+        } );
+    </script>
+
+    <script src="~/Content/modules/jquery.min.js"></script>
+    <script src="~/Content/js/datatables.min.js"></script>
+    <script src="~/Content/modules/popper.js"></script>
+    <script src="~/Content/modules/tooltip.js"></script>
+    <script src="~/Content/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="~/Content/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+    <script src="~/Content/js/sa-functions.js"></script>
+
+    <script src="~/Content/modules/chart.min.js"></script>
+    <script src="~/Content/modules/summernote/summernote-lite.js"></script>
+
+    <script src="~/Content/js/scripts.js"></script>
+    <script src="~/Content/js/custom.js"></script>
+
+</body>
+</html>

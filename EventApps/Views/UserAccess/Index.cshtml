@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EventApps.Models.UserAccess>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section">
+    <h1 class="section-header">
+        <div>Events</div>
+    </h1>
+    <div class="card" style="padding:20px">
+        <div>
+            <a href="@Url.Action("Create","UserAccess")" class="btn btn-primary" style="float:right">Create Event</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>NIP</td>
+                    <td>Name</td>
+                    <td>Username</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var items in Model)
+                {
+                    <tr>
+                        <td>@items.NIP</td>
+                        <td>@items.Name</td>
+                        <td>@items.Username</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "UserAccess", new { nip = items.NIP })" class="btn btn-warning">Edit</a>
+                            <a href="@Url.Action("Delete", "UserAccess", new { nip = items.NIP })" onclick="javascript:return confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+

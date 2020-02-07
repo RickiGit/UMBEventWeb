@@ -1,0 +1,58 @@
+﻿@model IEnumerable<EventApps.Models.Registration>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section">
+    <h1 class="section-header">
+        <div>Participant Registration</div>
+        @Html.Raw(TempData["msg"])
+    </h1>
+    <div class="card" style="padding:20px">
+        <table id="tableList" class="table table-striped">
+            <thead>
+                <tr>
+                    <td>ID Registration</td>
+                    <td>Name</td>
+                    <td>Event</td>
+                    <td>Price</td>
+                    <td>Register Date</td>
+                    <td>Status</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var items in Model)
+                {
+                <tr>
+                    <td>@items.ID</td>
+                    <td>@items.Participant.Name</td>
+                    <td>@items.Event.Title</td>
+                    <td>@items.Price</td>
+                    <td>@items.RegisterDate.ToString("dd MMM yyyy")</td>
+
+                    @if (items.Status == 0)
+                    {
+                        <td><label style="color: orange">Pending</label></td>
+                        <td>
+                            <a href="@Url.Action("Verification", "Registration", new { id = items.ID, idevent = items.IDEvent })" onclick="javascript:return confirm('Are you sure want to verification?')" class="btn btn-success">Verification</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td><label style="color: green">Success</label></td>
+                        <td>
+                            
+                        </td>
+                    }
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+

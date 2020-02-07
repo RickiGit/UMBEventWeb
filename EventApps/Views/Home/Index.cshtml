@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EventApps.Models.Event>
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<section class="section">
+    <h1 class="section-header">
+        <div>Dashboard</div>
+    </h1>
+    <div class="row">
+        <div class="col col-md-3">
+            <div class="card" style="padding:25px">
+                <label>Total Event</label>
+                <h1>@ViewBag.TotalEvent</h1>
+            </div>
+        </div>
+        <div class="col col-md-3">
+            <div class="card" style="padding:25px">
+                <label>Coming Event</label>
+                <h1>@ViewBag.TotalComingEvent</h1>
+            </div>
+        </div>
+        <div class="col col-md-3">
+            <div class="card" style="padding:25px">
+                <label>Past Event</label>
+                <h1>@ViewBag.TotalPastEvent</h1>
+            </div>
+        </div>
+        <div class="col col-md-3">
+            <div class="card" style="padding:25px">
+                <label>Total Participant</label>
+                <h1>@ViewBag.TotalParticipant</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-md-12">
+            <div class="card" style="padding: 25px">
+                <label>5 Coming Event</label>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Event Name</td>
+                            <td>Date</td>
+                            <td>Total Participant Registration</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var items in Model)
+                        {
+                            <tr>
+                                <td>@items.Title</td>
+                                <td>@items.StartDate.ToString("dd MMM yyyy")</td>
+                                <td>@items.Registrations.Count</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

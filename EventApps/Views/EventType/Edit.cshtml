@@ -1,0 +1,38 @@
+﻿@model EventApps.Models.EventType
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    input[type=text] {
+        min-width: 100%;
+    }
+
+    textarea {
+        min-width: 100%;
+    }
+</style>
+
+<section class="section">
+    @Html.Raw(TempData["msg"])
+    <h1 class="section-header">
+        <div>Create Events Type</div>
+    </h1>
+    <div class="card" style="padding:20px">
+        <div class="col col-md-6">
+            @using (Html.BeginForm("Edit", "EventType", FormMethod.Post, new
+            {
+                enctype = "multipart/form-data"
+            }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="ID" value="@Model.ID" />
+                <input type="text" name="Name" id="Name" class="form-control" style="margin-bottom:10px" placeholder="Name Event Type" value="@Model.Name"/>
+                <textarea name="Description" id="Description" class="form-control" style="margin-bottom:10px" placeholder="Description">@Model.Description</textarea>
+                <input type="submit" class="btn btn-primary" value="Save Data" />
+            }
+        </div>
+    </div>
+</section>
+

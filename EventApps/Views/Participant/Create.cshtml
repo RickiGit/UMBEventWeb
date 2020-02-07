@@ -1,0 +1,57 @@
+﻿@model EventApps.Models.Participant
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    input[type=text], input[type=email], input[type=password], input[type=file] {
+        min-width: 100%;
+        height: 50px;
+    }
+
+    select {
+        min-width: 100%;
+        min-height: 50px;
+    }
+</style>
+
+<section class="section">
+    @Html.Raw(TempData["msg"])
+    <h1 class="section-header">
+        <div>Create Participant</div>
+    </h1>
+    <div class="card" style="padding:20px">
+        <div class="col col-md-6">
+            @using (Html.BeginForm("Create", "Participant", FormMethod.Post, new
+            {
+                enctype = "multipart/form-data"
+            }))
+            {
+                @Html.AntiForgeryToken()
+                <label>NIM / NIP</label>
+                <input type="text" name="ID" id="ID" class="form-control" style="margin-bottom:10px" placeholder="Name" />
+                <label>Name</label>
+                <input type="text" name="Name" id="Name" class="form-control" style="margin-bottom:10px" placeholder="Name" />
+                <label>Email</label>
+                <input type="email" name="Email" id="Email" class="form-control" style="margin-bottom:10px" placeholder="Email" />
+                <label>Phone</label>
+                <input type="text" name="Phone" id="Phone" class="form-control" style="margin-bottom:10px" placeholder="Phone Number" />
+                <label>Gender</label>
+                @Html.DropDownListFor(model => Model.Gender, ViewBag.Gender as IEnumerable<SelectListItem>, new { @class = "form-control", @style = "margin-bottom:10px" })
+                <label>Photos</label>
+                <input type="file" name="Image" id="Image" class="form-control" style="margin-bottom:10px" />
+                <label>Participant Type</label>
+                @Html.DropDownListFor(model => Model.IDType, ViewBag.ParticipantType as IEnumerable<SelectListItem>, new { @class = "form-control", @style = "margin-bottom:10px" })
+                <label>Usernmae</label>
+                <input type="text" name="Username" id="Username" class="form-control" style="margin-bottom:10px" placeholder="Username" />
+                <label>Password</label>
+                <input type="password" name="Password" id="Password" class="form-control" style="margin-bottom:10px" placeholder="Password" />
+                <label>Confirm Password</label>
+                <input type="password" name="ConfirmPassword" id="ConfirmPassword" class="form-control" style="margin-bottom:10px" placeholder="Confirm Password" />
+
+                <input type="submit" class="btn btn-primary" value="Save Data" />
+            }
+        </div>
+    </div>
+</section>

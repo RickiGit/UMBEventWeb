@@ -1,0 +1,33 @@
+﻿@model Byte[]
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Absent Event</title>
+    <style>
+        .center {
+            position: absolute;
+            left: 25%;
+            top: 4%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="content">
+            @{
+                if (Model != null)
+                {
+                    <img class="center" src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model))" />
+                }
+            }
+        </div>
+    </div>
+</body>
+</html>

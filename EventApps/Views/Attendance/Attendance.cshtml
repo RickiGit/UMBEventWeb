@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EventApps.Models.Attendance>
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section">
+    <h1 class="section-header">
+        <div>List Attendance</div>
+    </h1>
+    <div class="card" style="padding:20px">
+        <table id="tableList" class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Title Event</td>
+                    <td>Name Attendance</td>
+                    <td>Clock In</td>
+                    <td>Clock Out</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var items in Model)
+                {
+                    <tr>
+                        <td>@items.Event.Title</td>
+                        <td>@items.Participant.Name</td>
+                        <td>@items.CheckInDate</td>
+                        <td>@items.CheckOutDate</td>
+                        <td>@items.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+

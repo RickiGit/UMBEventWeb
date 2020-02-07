@@ -1,0 +1,39 @@
+﻿@model IEnumerable<EventApps.Models.EventType>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section">
+    <h1 class="section-header">
+        <div>Events Type</div>
+    </h1>
+    <div class="card" style="padding:20px">
+        <div>
+            <a href="@Url.Action("Create","EventType")" class="btn btn-primary" style="float:right">Create Type Event</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Name Event Type</td>
+                    <td>Description</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var items in Model)
+                {
+                    <tr>
+                        <td>@items.Name</td>
+                        <td>@items.Description</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "EventType", new { ID = items.ID })" class="btn btn-warning">Edit</a>
+                            <a href="@Url.Action("Delete", "EventType", new { ID = items.ID })" onclick="javascript:return confirm('Are you sure want to delete?')" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
